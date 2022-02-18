@@ -1,0 +1,110 @@
+{
+	"title": "Contact us",
+	"action": "",
+	"fields": [
+		{
+			"name": "name",
+			"label": "Name",
+			"type": "text",
+			"placeholder": "Enter your name",
+			"disabled": false,
+			"required": true
+		},
+		{
+			"name": "email",
+			"label": "Email",
+			"type": "email",
+			"placeholder": "Enter your email",
+			"disabled": true,
+			"required": true
+		},
+		{
+			"name": "message",
+			"label": "Message",
+			"type": "textarea",
+			"placeholder": "Enter your message",
+			"disabled": false,
+			"required": true
+		},
+		{
+			"name": "date",
+			"label": "Date",
+			"type": "date",
+			"placeholder": "Date",
+			"disabled": false,
+			"required": true
+		},
+		{
+			"name": "time",
+			"label": "Time",
+			"type": "time",
+			"placeholder": "Time",
+			"disabled": false,
+			"required": true
+		},
+		{
+			"name": "file",
+			"label": "File",
+			"type": "file",
+			"placeholder": "File",
+			"disabled": false,
+			"required": true
+		},
+		{
+			"name": "job-position",
+			"label": "Job position",
+			"type": "select",
+			"options": [
+				{
+					"value": "web-developer",
+					"label": "Web developer"
+				},
+				{
+					"value": "data-scientist",
+					"label": "Data scientist"
+				}
+			],
+			"disabled": false,
+			"required": true
+		},
+		{
+			"name": "favorite-ide",
+			"label": "Favorite IDE",
+			"type": "radio",
+			"options": ["vscode", "jetbrains fleet"],
+			"disabled": false,
+			"required": true
+		},
+		{
+			"name": "favorite-ide",
+			"label": "Favorite IDE",
+			"type": "checkbox",
+			"options": ["vscode", "jetbrains fleet"],
+			"disabled": false,
+			"required": true
+		}
+	],
+	"buttons": [
+		{
+			"type": "submit",
+			"title": "Send"
+		}
+	],
+	"process": [
+		{
+			"type": "email",
+			"from": "",
+			"to": "",
+			"subject": "",
+			"body": ""
+		},
+		{
+			"type": "notification",
+			"message": ""
+		},
+		{
+			"type": "redirect",
+			"url": "/thank-you"
+		}
+	]
+}

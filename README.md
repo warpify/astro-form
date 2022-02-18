@@ -1,3 +1,3 @@
-# 🚀 Astro theming
+# 🚀 Astro form
 
 TODO: Docs

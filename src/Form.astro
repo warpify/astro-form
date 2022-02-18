@@ -1,0 +1,121 @@
+---
+interface Field {
+	title?: string;
+	action?: string;
+	fields?: object[];
+	buttons?: object[];
+	process?: object[];
+}
+
+interface Props {
+	form: Field[];
+	provider?: string;
+	honeypot?: boolean;
+}
+
+const { provider, honeypot = false, form = {} } = Astro.props as Props;
+
+let netlify = false;
+if (provider && provider == "netlify") {
+	netlify = true;
+}
+---
+
+<form name="contact" method="POST" netlify-honeypot={honeypot && netlify ? "bot-field" : false} data-netlify={netlify}>
+	
+	<!-- Honeypot definition -->
+	{netlify && (
+		<>
+		<input type="hidden" name="form-name" value="contact" />
+		{honeypot && (
+			<p class="honeypot">
+				<label>
+					Don’t fill this out if you're human:
+					<input name="bot-field" />
+				</label>
+			</p>
+		)}
+		</>
+	)}
+
+	<!-- Fields -->
+	{form && form.fields && (
+		<>
+		<fieldset>
+		<legend>{form.title}</legend>
+		{form.fields.map(field => (
+			<>
+			<label for={field.name}>
+				<span>{field.label}</span>
+				{field.type == "text" ? (
+					<input type="text" id={field.name} placeholder={field.placeholder} name={field.name} required={field.required} disabled={field.disabled}/>
+				) : field.type == "email" ? (
+					<input type="email" id={field.name} placeholder={field.placeholder} name={field.name} required={field.required} disabled={field.disabled}/>
+				) : field.type == "textarea" ? (
+					<textarea id={field.name} placeholder={field.placeholder} name={field.name} required={field.required} disabled={field.disabled}></textarea>
+				) : field.type == "select" ? (
+					<>
+					<select id={field.name} name={field.name} required={field.required} disabled={field.disabled} multiple={field.multiple}>
+						<!--{field.options.map(option => (
+							<option value={option.value}>{option.label}</option>
+						))}-->
+					</select>
+					</>
+				) : field.type == "radio" ? (
+					<>
+					<div>
+					{field.options.map(option => (
+						<input type="radio" name={field.name} value={option.value} required={field.required} disabled={field.disabled} />
+						<span>{option}</span>
+					))}
+					</div>
+					</>
+				) : field.type == "checkbox" ? (
+					<>
+					<div>
+					{field.options.map(option => (
+						<input type="checkbox" name={field.name} value={option.value} required={field.required} disabled={field.disabled} />
+						<span>{option}</span>
+					))}
+					</div>
+					</>
+				) : field.type == "file" ? (
+					<input type="file" id={field.name} name={field.name} required={field.required} disabled={field.disabled} />
+				) : field.type == "date" ? (
+					<input type="date" id={field.name} name={field.name} required={field.required} disabled={field.disabled} />
+				) : field.type == "time" ? (
+					<input type="time" id={field.name} name={field.name} required={field.required} disabled={field.disabled} />
+				) : field.type == "datetime-local" ? (
+					<input type="datetime-local"  id={field.name} name={field.name} required={field.required} disabled={field.disabled} />
+				) : (
+					<input type="text" id={field.name} placeholder={field.placeholder} name={field.action} required={field.required} />
+				)}
+			</label>
+			</>
+		))}
+		{form.buttons.map(button => (
+			<>
+			<button type={button.type} disabled={button.disabled}>{button.title}</button>
+			</>
+		))}	
+		</fieldset>
+		</>
+	)}
+</form>
+
+<style lang="scss">
+	form {
+		fieldset {
+			display: flex;
+			flex-direction: column;
+    		align-items: flex-start;
+			> label {
+				display: flex;
+				flex-direction: column;
+			}
+		}
+		.honeypot {
+			display: none;
+		}
+	}
+</style>

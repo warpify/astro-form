@@ -1,8 +1,11 @@
 ---
 import Layout from "../layouts/base.astro";
+import { Form } from "../index.js";
+import contactform from "../data/contactform.json";
 ---
 
 <Layout>
+	<Form form={contactform} provider="netlify" honeypot={true} />
 </Layout>
 
 <style global>

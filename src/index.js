@@ -1,2 +1,1 @@
-export { default as FooterLarge } from "./FooterLarge.astro";
-export { default as FooterSimple } from "./FooterSimple.astro";
+export { default as Form } from "./Form.astro";

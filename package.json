@@ -1,23 +1,21 @@
 {
-	"name": "astro-footers",
+	"name": "astro-form",
 	"version": "0.0.1",
-	"description": "Collection of footers for astro",
-	"homepage": "https://github.com/warpsio/astro-footers",
+	"description": "Forms for astro",
+	"homepage": "https://github.com/warpsio/astro-form",
 	"bugs": {
-		"url": "https://github.com/warpsio/astro-footers/issues"
+		"url": "https://github.com/warpsio/astro-form/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/warpsio/astro-footers"
+		"url": "https://github.com/warpsio/astro-form"
 	},
 	"files": [
 		"src/index.js",
-		"src/Fullscreen.astro",
-		"src/Simple.astro"
+		"src/Form.astro"
 	],
 	"exports": "./src/index.js",
 	"keywords": [
-		"astro-component",
 		"astro"
 	],
 	"author": "Giulio Zanchetta",
@@ -29,13 +27,10 @@
 		"release": "standard-version"
 	},
 	"devDependencies": {
-		"astro": "^0.21.4",
-		"prettier": "^2.4.1",
-		"prettier-plugin-astro": "^0.0.9",
+		"astro": "next",
+		"prettier": "^2.5.1",
+		"prettier-plugin-astro": "^0.0.12",
+		"sass": "^1.49.7",
 		"standard-version": "^9.3.2"
-	},
-	"dependencies": {
-		"astro-image": "^0.0.1",
-		"astro-localization": "^0.0.1"
 	}
 }
