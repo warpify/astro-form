@@ -9,11 +9,13 @@ interface Field {
 
 interface Props {
 	form: Field[];
+	className?: string; // Classes to add to <section> element
 	provider?: string;
 	honeypot?: boolean;
+	horizontal?: boolean;
 }
 
-const { provider, honeypot = false, form = {} } = Astro.props as Props;
+const { provider, class: className = "", honeypot = false, horizontal = false, form = {} } = Astro.props as Props;
 
 let netlify = false;
 if (provider && provider == "netlify") {
@@ -21,8 +23,8 @@ if (provider && provider == "netlify") {
 }
 ---
 
-<form name="contact" method="POST" netlify-honeypot={honeypot && netlify ? "bot-field" : false} data-netlify={netlify}>
-	
+<form name="contact" method="POST" class={`${className} ${horizontal ? "horizontal" : ""}`.trim()} netlify-honeypot={honeypot && netlify ? "bot-field" : false} data-netlify={netlify}>
+
 	<!-- Honeypot definition -->
 	{netlify && (
 		<>
@@ -97,7 +99,7 @@ if (provider && provider == "netlify") {
 			<>
 			<button type={button.type} disabled={button.disabled}>{button.title}</button>
 			</>
-		))}	
+		))}
 		</fieldset>
 		</>
 	)}
@@ -105,13 +107,26 @@ if (provider && provider == "netlify") {
 
 <style lang="scss">
 	form {
+		&.horizontal {
+			fieldset {
+				display: flex;
+				flex-direction: row;
+				align-items: flex-end;
+				gap: 0.5rem;
+			}
+		}
+
 		fieldset {
+			width: 100%;
 			display: flex;
 			flex-direction: column;
     		align-items: flex-start;
+			gap: 0.2rem;
+
 			> label {
 				display: flex;
 				flex-direction: column;
+				flex-grow: 1;
 			}
 		}
 		.honeypot {
