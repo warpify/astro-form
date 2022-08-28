@@ -1,7 +1,7 @@
 {
 	"name": "astro-form",
 	"type": "module",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "Forms for astro",
 	"homepage": "https://github.com/warpsio/astro-form",
 	"bugs": {
@@ -29,10 +29,10 @@
 		"release": "standard-version"
 	},
 	"devDependencies": {
-		"astro": "^1.0.0-beta.0",
-		"prettier": "^2.6.2",
-		"prettier-plugin-astro": "^0.0.12",
-		"sass": "^1.49.11",
-		"standard-version": "^9.3.2"
+		"astro": "^1.1.1",
+		"prettier": "^2.7.1",
+		"prettier-plugin-astro": "^0.5.3",
+		"sass": "^1.54.5",
+		"standard-version": "^9.5.0"
 	}
 }
